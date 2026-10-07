@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "AIRewards",
+  "version": "1.0.0",
+  "description": "View your AIRewards profile and wallet balance.",
+  "permissions": ["storage", "tabs", "alarms"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AIRewards"
+  },
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "js": ["dashboard-bridge.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

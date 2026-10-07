@@ -1,0 +1,1 @@
+export { discoverAnchors } from './registry';
