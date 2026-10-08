@@ -261,9 +261,9 @@ async function fetchRecommendation(
           }),
         );
 
-        // 401 (logged out) / 404 (no ad available): nothing to render from the
+        // 401 (logged out) / 403 (ineligible) / 404 (no ad available): nothing to render from the
         // API right now. Fall through to cache/no recommendation; no point retrying.
-        if (response.status === 401 || response.status === 404) {
+        if (response.status === 401 || response.status === 403 || response.status === 404) {
           return { fetched: null, reason: lastReason };
         }
 
